@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Agent_Sudo_Write-up</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/mystyle.css">
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <style>
+            hr.class-1{
+                border-top: 3px solid black;
+                width: 20%;
+            }
+            
+        </style>
+        <style>
+            .navbar {
+                margin-bottom: 0;
+                border-radius: 0;
+            }
+
+            .container-fluid {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            .tags{
+                color: grey;
+            }
+            h4{
+                padding: 1px;
+            }
+            @media (min-width: 768px) {
+                .navbar-centered .navbar-nav {
+                    float: none;
+                    text-align: center;
+                }
+                .navbar-centered .navbar-nav > li {
+                    float: none;
+                }
+                .navbar-centered .nav > li {
+                    display: inline;
+                }
+                .navbar-centered .nav > li > a {
+                    display: inline-block;
+                }
+            }
+        </style>
+        <style>
+            .sticky {
+                position: fixed;
+                top: 0;
+                width: 50%;
+                z-index: 9999;
+            }
+        </style>
+        <script>
+            window.addEventListener('scroll', function() {
+                var navbar = document.getElementById('myNavbar');
+
+                if (window.pageYOffset > navbar.offsetTop) {
+                    navbar.classList.add('sticky');
+                } else {
+                    navbar.classList.remove('sticky');
+                }
+            });
+        </script>
+    </head>
+    <body data-spy="scroll" data-target=".navbar"  style="background-color:#E8E4C9;">
+        <div class="container-fluid col-md-6 col-md-offset-3" style="background-color: #F8F8FF;">
+            <div class="row navbar-centered">
+                <nav class="navbar navbar-inverse" id="myNavbar">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarContent">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbarContent">
+                            <ul class="nav navbar-nav">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="index.html#about">About</a></li>
+                                    <li><a href="index.html#writeups">Writeups</a></li>
+                                    <li><a href="index.html#certificates">Certificates</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <br>
+            <div class="row">
+                <center><h1>TryHackMe: Agent Sudo - Writeup</h1></center>
+            </div>
+            
+
+            <div class="container-fluid">
+                <center><p class="tags">Sep 18, 2024 | Riley S.</p></center>
+                <hr>
+                <hr class="class-1">
+                <div class="col-md-10 col-md-offset-1">
+                    <p class="text-justify" style="text-indent: 10%;">
+                        Agent Sudo is a room on TryHackMe created by DesKel. This room includes Enumeration, Hash cracking, 
+                        Steganalysis, and Privilege Escalation. To begin, start the machine.
+                    </p>
+                </div>
+                <div class="col-md-10 col-md-offset-1">
+                    <h3>Enumeration</h3><br>
+                    <p class="text-justify">
+                        <b>1. How many open ports</b>
+                    </p>
+                    <p class="text-justify">
+                        For this question you can use Nmap.
+                    </p>
+                     <div class="text-center">
+                        <img src="img/agent-sudo-nmap.png" style="width: 100%; height:auto;">
+                        
+                    </div><br><br>
+                    <p class="text-justify">
+                        <b>2. How do you redirect yourself to a secret page?</b>
+                    </p>
+                    <p class="text-justify">
+                       The answer to this question is in the homepage of the server. Access the home page by typing out the 
+                       ip address of the machine to a web browser.
+                    </p>
+                     <div class="text-center">
+                        <img src="img/agent-sudo-default-page.png" style="width: 100%; height:auto;">
+                    </div><br><br>
+
+                    <p class="text-justify">
+                        <b>3. What is the agent's name?</b>
+                    </p>
+                    <p class="text-justify">
+                        I will be using burpsuite to intercept the request and change the user agent.
+                        The clue to this is also in the home page.
+                    </p>
+                     <div class="text-center">
+                        <img src="img/agent-sudo-q3.png" style="width: 100%; height:auto;">
+                    </div><br>
+                    <p class="text-justify">
+                        After forwarding the request this is what we'll get.
+                    </p>
+                    <div class="text-center">
+                        <img src="img/agent-sudo-q3-1.png" style="width: 100%; height:auto;">
+                    </div><br><br>
+
+                    <h3>Hash Cracking and Brute Force</h3><br>
+                    <p class="text-justify">
+                        <b>4. FTP Password</b>
+                    </p>
+                    <p class="text-justify">
+                        Use Hydra for this question.
+                    </p>
+                     <div class="text-center">
+                        <img src="img/agent-sudo-q4.png" style="width: 100%; height:auto;">
+                    </div><br><br>
+
+                    <p class="text-justify">
+                        <b>5. Zip File Password</b>
+                    </p>
+                    <p class="text-justify">
+                        Login to the FTP server using the credentials that you've found.
+                    </p>
+                     <div class="text-center">
+                        <img src="img/agent-sudo-q5.png" style="width: 100%; height:auto;">
+                    </div><br>
+                    <p class="text-justify">
+                        Download these files using the "mget" command
+                    </p>
+                     <div class="text-center">
+                        <img src="img/agent-sudo-q5-1.png" style="width: 100%; height:auto;">
+                    </div><br>
+                    <p class="text-justify">
+                        Use binwalk on the cutie.png file.
+                    </p>
+                     <div class="text-center">
+                        <img src="img/agent-sudo-q5-2.png" style="width: 100%; height:auto;">
+                    </div><br>
+                    <p class="text-justify">
+                        You will notice that inside this png file, there are multiple files including a zip file.
+                        Extract the files using binwalk.
+                    </p>
+                     <div class="text-center">
+                        <img src="img/agent-sudo-q5-3.png" style="width: 100%; height:auto;">
+                    </div><br>
+                    <p class="text-justify">
+                        After extracting you will see a new directory. Try opening it.
+                    </p>
+                     <div class="text-center">
+                        <img src="img/agent-sudo-q5-4.png" style="width: 100%; height:auto;">
+                    </div><br>
+                    <p class="text-justify">
+                        8702 is a password protected zip file. To crack the password we will first need to extract the hash of the zip file. 
+                        You can use zip2john for this.
+                    </p>
+                     <div class="text-center">
+                        <img src="img/agent-sudo-q5-5.png" style="width: 100%; height:auto;">
+                    </div><br>
+                    <p class="text-justify">
+                        Now that we have the hash we will be using JohnTheRipper to bruteforce the password.
+                    </p>
+                     <div class="text-center">
+                        <img src="img/agent-sudo-q5-6.png" style="width: 100%; height:auto;">
+                    </div><br><br>
+                    
+                    <p class="text-justify">
+                        <b>6. Steg Password</b>
+                    </p>
+                    <p class="text-justify">
+                        Use Stegseek on the cutie-alien.jpg file. This will extract the file in your directory.
+                    </p>
+                     <div class="text-center">
+                        <img src="img/agent-sudo-q6.png" style="width: 100%; height:auto;">
+                    </div><br><br>
+
+                    <p class="text-justify">
+                        <b>7. Who is the other agent?</b>
+                    </p>
+                    <p class="text-justify">
+                        Open the text file that was extracted by stegseek.
+                    </p>
+                     <div class="text-center">
+                        <img src="img/agent-sudo-q7.png" style="width: 100%; height:auto;">
+                    </div><br>
+                    <p class="text-justify">
+                        Take note of this name and password. We will be using this to login to the ssh server.
+                    </p>
+                    <br><br>
+                    
+                    <h3>Capture the user flag</h3><br>
+
+                    <p class="text-justify">
+                        <b>8. What is the user flag?</b>
+                    </p>
+                    <p class="text-justify">
+                        Using the credentials that you found in the previous question, login to the ssh.
+                    </p>
+                    <div class="text-center">
+                        <img src="img/agent-sudo-q8.png" style="width: 100%; height:auto;">
+                        
+                    </div><br>
+                    <div class="text-center">
+                        <img src="img/agent-sudo-q8-1.png" style="width: 100%; height:auto;">
+                        
+                    </div><br>
+                    <p class="text-justify">
+                        Use "cat" to display whats inside the user_flag.txt.
+                    </p><br><br>
+
+                    <p class="text-justify">
+                        <b>9. What is the incident of the photo called?</b>
+                    </p>
+                    <p class="text-justify">
+                        So for this one, download the jpg file in the ssh server using scp.
+                    </p>
+                    <div class="text-center">
+                        <img src="img/agent-sudo-q9.png" style="width: 100%; height:auto;">
+                        
+                    </div><br>
+                    <p class="text-justify">
+                        After downloading use reverse image search (I used tineye)
+                    </p>
+                    <div class="text-center">
+                        <img src="img/agent-sudo-q9-1.png" style="width: 100%; height:auto;">
+                    </div><br>
+                    <p class="text-justify">
+                        In the sort portion, search for foxnews.com and click the link on the first result.
+                    </p>
+                    <div class="text-center">
+                        <img src="img/agent-sudo-q9-2.png" style="width: 100%; height:auto;">
+                    </div><br><br>
+
+                    <h3>Privilege Escalation</h3><br>
+                    <p class="text-justify">
+                        <b>10. CVE Number for the Escalation</b>
+                    </p>
+                    <p class="text-justify">
+                        While logged inside the ssh, run sudo -l. This will display the allowed commands the user can do on the host.
+                    </p>
+                    <div class="text-center">
+                        <img src="img/agent-sudo-q10.png" style="width: 100%; height:auto;">
+                    </div><br>
+                    <p class="text-justify">
+                        Search (ALL, !root) /bin/bash on google.
+                    </p>
+                    <div class="text-center">
+                        <img src="img/agent-sudo-q10-1.png" style="width: 100%; height:auto;">
+                    </div><br><br>
+
+                    <p class="text-justify">
+                        <b>11. What is the root flag?</b>
+                    </p>
+                    <p class="text-justify">
+                        Scroll through the CVE documentation.
+                    </p>
+                    <div class="text-center">
+                        <img src="img/agent-sudo-q11.png" style="width: 100%; height:auto;">
+                    </div><br>
+                    <div class="text-center">
+                        <img src="img/agent-sudo-q11-1.png" style="width: 100%; height:auto;">
+                    </div><br>
+                    <p class="text-justify">
+                        Navigate through the file system and find the root flag located in the root folder.
+                    </p>
+                    <div class="text-center">
+                        <img src="img/agent-sudo-q11-2.png" style="width: 100%; height:auto;">
+                    </div><br><br>
+
+                    <p class="text-justify">
+                        <b>12. (Bonus) Who is Agent R?</b>
+                    </p>
+                    <p class="text-justify">
+                        Read the root.txt file. :)
+                    </p><br>
+
+                     <hr class="class-1">
+
+                     <center><h1>Conclusion</h1></center><br>
+                     <p class="text-justify">This room was fun to work through, and I hope I was able to assist you in tackling it. 
+                        Thank you for taking the time to read my write-up.</p>
+                </div>
+                
+            </div><br><br>
+            <div class="row">
+                <div class="container-fluid navbar-inverse" style="color:white;">
+                    <p class="text-center">Riley Simeon 2024</p>
+                </div> 
+            </div>
+        </div>
+        
+            
+    </body>
+
+    
+
+</html>
