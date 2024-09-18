@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Portfolio</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/mystyle.css">
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+        <style>
+            hr.class-1{
+                border-top: 3px solid black;
+                width: 20%;
+            }
+
+            .navbar {
+                margin-bottom: 0;
+                border-radius: 0;
+            }
+
+            .container-fluid {
+                padding-top: 0;
+                padding-bottom: 0;
+            }   
+            @media (min-width: 768px) {
+                .navbar-centered .navbar-nav {
+                    float: none;
+                    text-align: center;
+                }
+                .navbar-centered .navbar-nav > li {
+                    float: none;
+                }
+                .navbar-centered .nav > li {
+                    display: inline;
+                }
+                .navbar-centered .nav > li > a {
+                    display: inline-block;
+                }
+            }
+            .iframe_container{
+                width: 100%;
+            }
+            .iframe_sauce{
+                width: 70%;
+                height: 375px !important;
+            }
+            a{
+                color: black;
+                transition : 0.5s;
+                opacity : 1;               
+            }
+            a:hover {
+                text-decoration : red underline;
+            }
+        </style>
+        <style>
+            .sticky {
+                position: fixed;
+                top: 0;
+                width: 50%;
+                z-index: 9999;
+            }
+
+        </style>
+        <script>
+            window.addEventListener('scroll', function() {
+                var navbar = document.getElementById('myNavbar');
+
+                if (window.pageYOffset > navbar.offsetTop) {
+                    navbar.classList.add('sticky');
+                } else {
+                    navbar.classList.remove('sticky');
+                }
+            });
+        </script>
+    </head>
+        
+    <body data-spy="scroll" data-target=".navbar" style="background-image: url('img/background2.jpg')">
+
+        <div class="container-fluid col-md-6 col-md-offset-3" style="background-color: #F8F8FF;">
+            <div class="row">
+                <img src="img/banner.gif" style="width: 100%; height:auto;">
+            </div>
+            <div class="row navbar-centered">
+                <nav class="navbar navbar-inverse" id="myNavbar">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarContent">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+                            <ul class="nav navbar-nav text-center">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="#about">About</a></li>
+                                    <li><a href="#writeups">Writeups</a></li>
+                                    <li><a href="#certificates">Certificates</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <br><br>
+            <section id="about">
+                <div class="container-fluid">
+                
+                    <h1 class="text-center">About Me</h1>
+                    <hr class="class-1">
+                    <h3 class="text-center">Hello!</h3><br>
+                    <div class="container col-md-10 col-md-offset-1 ">
+                        <p style="text-indent: 10%;" class="text-justify">A Cyber Security enthusiast who is aiming to play a vital role in safeguarding critical assets and data from malicious actors. Aspiring to thrive in a collaborative team environment all while enhancing skills and staying up to date with the constantly evolving technology.
+
+                        </p>
+                    </div>
+                </div>
+                <hr>
+            </section>
+
+            <section id="writeups">
+                <div class="container-fluid">
+                    <h1 class="text-center">Writeups</h1>
+                    <hr class="class-1"><br>
+                    <center><script src="https://tryhackme.com/badge/2949473"></script></center><br>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <a href="agent-sudo.html"><img src="img/agent-sudo.png" style="width:50%; height:auto;"></a>
+                            <div class="caption text-center"><a href="agent-sudo.html">Agent Sudo</a></div>
+                        </div>
+                    </div>
+                </div><br><br>
+            </section>
+            <hr>
+
+            <section id="certificates">
+                <h1 class="text-center">Certificates</h1>
+                <hr class="class-1"><hr><br>  
+                <div class="row text-center">
+                    <div class="col-md-2 col-md-offset-2">
+                        <img src="img/50_Oracle_Cloud_Infrastructure.png" style="height: 200px; width:auto;">
+                    </div>
+                    <div class="col-md-2 col-md-offset-2">
+                        <img src="img/oraclespecialist.png" style="height: 200px; width:auto;">
+                    </div>
+                </div>
+            </section>
+            <br>
+
+            <section id="contacts">
+                    <hr><br>
+                    <h1 class="text-center">Connect with me</h1>
+                    <hr class="class-1"><br><br>
+                    <div class="text-center">
+                        <div class="col-md-4">
+                            <a href="https://www.linkedin.com/in/jan-riley-simeon-403033268/"><img src="img/linkedin_black_logo_icon_147114.png" style="height: auto; width:125px;"></a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="https://github.com/rileysimeon/"><img src="img/githublogo.png" style="height: auto; width:125px;"></a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="mailto:janriley.simeon@gmail.com"><img src="img/emaillogo.png" style="height: auto; width: 125px;"></a>
+                        </div><hr><br><br>
+                    </div>
+            </section>
+            <br><br><br><br><br><br>
+            <div class="row">
+                <div class="container-fluid navbar-inverse" style="color:white;">
+                    <p class="text-center">Riley Simeon 2024</p>
+                </div> 
+            </div>
+
+        </div>
+    </body>
+    
+</html>
