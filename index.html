@@ -45,32 +45,30 @@
                 width: 70%;
                 height: 375px !important;
             }
-            a{
-                color: black;
-                transition : 0.5s;
-                opacity : 1;               
-            }
-            a:hover {
-                text-decoration : red underline;
-            }
         </style>
         <style>
             .sticky {
                 position: fixed;
                 top: 0;
                 width: 50%;
+                left: 50%;
+                transform: translateX(-50%);
                 z-index: 9999;
             }
 
         </style>
         <script>
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', function () {
                 var navbar = document.getElementById('myNavbar');
-
+                var parentContainer = navbar.closest('.container');
+                var containerWidth = parentContainer.offsetWidth;
+    
                 if (window.pageYOffset > navbar.offsetTop) {
                     navbar.classList.add('sticky');
+                    navbar.style.width = containerWidth + 'px';
                 } else {
                     navbar.classList.remove('sticky');
+                    navbar.style.width = 'auto';
                 }
             });
         </script>
@@ -78,7 +76,7 @@
         
     <body data-spy="scroll" data-target=".navbar" style="background-image: url('img/background2.jpg')">
 
-        <div class="container-fluid col-md-6 col-md-offset-3" style="background-color: #F8F8FF;">
+        <div class="container col-md-6 col-md-offset-3" style="background-color: #F8F8FF;">
             <div class="row">
                 <img src="img/banner.gif" style="width: 100%; height:auto;">
             </div>
@@ -110,8 +108,10 @@
                     <h1 class="text-center">About Me</h1>
                     <hr class="class-1">
                     <h3 class="text-center">Hello!</h3><br>
-                    <div class="container col-md-10 col-md-offset-1 ">
-                        <p style="text-indent: 10%;" class="text-justify">A Cyber Security enthusiast who is aiming to play a vital role in safeguarding critical assets and data from malicious actors. Aspiring to thrive in a collaborative team environment all while enhancing skills and staying up to date with the constantly evolving technology.
+                    <div class="container-fluid">
+                        <p style="text-indent: 10%;" class="text-justify">A Cyber Security enthusiast who is aiming to play a vital role in safeguarding 
+                            critical assets and data from malicious actors. Aspiring to thrive in a collaborative team environment all while 
+                            enhancing skills and staying up to date with the constantly evolving technology.
 
                         </p>
                     </div>
@@ -122,14 +122,68 @@
             <section id="writeups">
                 <div class="container-fluid">
                     <h1 class="text-center">Writeups</h1>
-                    <hr class="class-1"><br>
-                    <center><script src="https://tryhackme.com/badge/2949473"></script></center><br>
-                    <div class="col-md-3">
-                        <div class="text-center">
-                            <a href="agent-sudo.html"><img src="img/agent-sudo.png" style="width:50%; height:auto;"></a>
-                            <div class="caption text-center"><a href="agent-sudo.html">Agent Sudo</a></div>
-                        </div>
-                    </div>
+                    <hr class="class-1">
+                    <table class="table">
+                        <thead class="table-dark">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Writeup</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>THM: Agent Sudo</td>
+                            <td>Done</td>
+                            <td><a href="agent-sudo.html">Done</a></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>THM: Bounty Hacker</td>
+                            <td>Done</td>
+                            <td><i>In Progress</i></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>THM: Blue</td>
+                            <td>Done</td>
+                            <td><i>In Progress</i></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">4</th>
+                            <td>THM: Simple CTF</td>
+                            <td>Done</td>
+                            <td><i>In Progress</i></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">5</th>
+                            <td>THM: Vulnversity</td>
+                            <td>Done</td>
+                            <td><i>In Progress</i></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">6</th>
+                            <td>THM: OhSint</td>
+                            <td>Done</td>
+                            <td><i>In Progress</i></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">7</th>
+                            <td>THM: Brute It</td>
+                            <td>Done</td>
+                            <td><i>In Progress</i></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">8</th>
+                            <td>THM: The Cod Caper</td>
+                            <td><i>In Progress</i></td>
+                            <td><i>In Progress</i></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                                       
                 </div><br><br>
             </section>
             <hr>
@@ -138,10 +192,10 @@
                 <h1 class="text-center">Certificates</h1>
                 <hr class="class-1"><hr><br>  
                 <div class="row text-center">
-                    <div class="col-md-2 col-md-offset-2">
+                    <div class="col-xs-6 col-sm-4 col-md-2 col-md-offset-2">
                         <img src="img/50_Oracle_Cloud_Infrastructure.png" style="height: 200px; width:auto;">
                     </div>
-                    <div class="col-md-2 col-md-offset-2">
+                    <div class="col-xs-6 col-sm-4 col-md-2 col-md-offset-2">
                         <img src="img/oraclespecialist.png" style="height: 200px; width:auto;">
                     </div>
                 </div>
@@ -153,23 +207,24 @@
                     <h1 class="text-center">Connect with me</h1>
                     <hr class="class-1"><br><br>
                     <div class="text-center">
-                        <div class="col-md-4">
+                        <div class="col-xs-6 col-sm-4 col-md-2">
                             <a href="https://www.linkedin.com/in/jan-riley-simeon-403033268/"><img src="img/linkedin_black_logo_icon_147114.png" style="height: auto; width:125px;"></a>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-xs-6 col-sm-4 col-md-2 col-md-offset-2">
                             <a href="https://github.com/rileysimeon/"><img src="img/githublogo.png" style="height: auto; width:125px;"></a>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-xs-6 col-sm-4 col-md-2 col-md-offset-2">
                             <a href="mailto:janriley.simeon@gmail.com"><img src="img/emaillogo.png" style="height: auto; width: 125px;"></a>
                         </div><hr><br><br>
                     </div>
             </section>
             <br><br><br><br><br><br>
-            <div class="row">
-                <div class="container-fluid navbar-inverse" style="color:white;">
-                    <p class="text-center">Riley Simeon 2024</p>
-                </div> 
-            </div>
+            <footer class="navbar navbar-inverse row" style="color: white; padding: 10px 0;">
+                <div class="container-fluid text-center">
+                    <p class="mb-0">RileyS © 2024</p>
+                </div>
+            </footer>
+            
 
         </div>
     </body>

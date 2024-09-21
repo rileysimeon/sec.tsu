@@ -51,17 +51,24 @@
                 position: fixed;
                 top: 0;
                 width: 50%;
+                left: 50%;
+                transform: translateX(-50%);
                 z-index: 9999;
             }
+
         </style>
         <script>
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', function () {
                 var navbar = document.getElementById('myNavbar');
-
+                var parentContainer = navbar.closest('.container');
+                var containerWidth = parentContainer.offsetWidth;
+    
                 if (window.pageYOffset > navbar.offsetTop) {
                     navbar.classList.add('sticky');
+                    navbar.style.width = containerWidth + 'px';
                 } else {
                     navbar.classList.remove('sticky');
+                    navbar.style.width = 'auto';
                 }
             });
         </script>
@@ -99,13 +106,13 @@
                 <center><p class="tags">Sep 18, 2024 | Riley S.</p></center>
                 <hr>
                 <hr class="class-1">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="container-fluid">
                     <p class="text-justify" style="text-indent: 10%;">
                         Agent Sudo is a room on TryHackMe created by DesKel. This room includes Enumeration, Hash cracking, 
                         Steganalysis, and Privilege Escalation. To begin, start the machine.
                     </p>
                 </div>
-                <div class="col-md-10 col-md-offset-1">
+                <div class="container-fluid">
                     <h3>Enumeration</h3><br>
                     <p class="text-justify">
                         <b>1. How many open ports</b>
@@ -322,11 +329,11 @@
                 </div>
                 
             </div><br><br>
-            <div class="row">
-                <div class="container-fluid navbar-inverse" style="color:white;">
-                    <p class="text-center">Riley Simeon 2024</p>
-                </div> 
-            </div>
+            <footer class="navbar navbar-inverse row" style="color: white; padding: 10px 0;">
+                <div class="container-fluid text-center">
+                    <p class="mb-0">RileyS © 2024</p>
+                </div>
+            </footer>
         </div>
         
             
