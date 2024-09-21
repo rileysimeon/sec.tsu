@@ -12,9 +12,7 @@
                 border-top: 3px solid black;
                 width: 20%;
             }
-            
-        </style>
-        <style>
+
             .navbar {
                 margin-bottom: 0;
                 border-radius: 0;
@@ -23,13 +21,7 @@
             .container-fluid {
                 padding-top: 0;
                 padding-bottom: 0;
-            }
-            .tags{
-                color: grey;
-            }
-            h4{
-                padding: 1px;
-            }
+            }   
             @media (min-width: 768px) {
                 .navbar-centered .navbar-nav {
                     float: none;
@@ -44,6 +36,13 @@
                 .navbar-centered .nav > li > a {
                     display: inline-block;
                 }
+            }
+            .iframe_container{
+                width: 100%;
+            }
+            .iframe_sauce{
+                width: 70%;
+                height: 375px !important;
             }
         </style>
         <style>
@@ -73,8 +72,10 @@
             });
         </script>
     </head>
-    <body data-spy="scroll" data-target=".navbar"  style="background-color:#E8E4C9;">
-        <div class="container-fluid col-md-6 col-md-offset-3" style="background-color: #F8F8FF;">
+        
+    <body data-spy="scroll" data-target=".navbar" style="background-image: url('img/background2.jpg')">
+
+        <div class="container col-md-6 col-md-offset-3" style="background-color: #F8F8FF;">
             <div class="row navbar-centered">
                 <nav class="navbar navbar-inverse" id="myNavbar">
                     <div class="container-fluid">
@@ -85,12 +86,12 @@
                                 <span class="icon-bar"></span>
                             </button>
                         </div>
-                        <div class="collapse navbar-collapse" id="navbarContent">
-                            <ul class="nav navbar-nav">
+                        <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+                            <ul class="nav navbar-nav text-center">
                                     <li><a href="index.html">Home</a></li>
-                                    <li><a href="index.html#about">About</a></li>
-                                    <li><a href="index.html#writeups">Writeups</a></li>
-                                    <li><a href="index.html#certificates">Certificates</a></li>
+                                    <li><a href="#about">About</a></li>
+                                    <li><a href="#writeups">Writeups</a></li>
+                                    <li><a href="#certificates">Certificates</a></li>
                             </ul>
                         </div>
                     </div>
